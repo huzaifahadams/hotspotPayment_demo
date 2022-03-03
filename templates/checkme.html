@@ -1,0 +1,11 @@
+<form method='post'>
+    {% csrf_token %}
+    <br>
+    
+    {{ form.as_p}}
+    {% comment %} {{ form.phone_num|as_crispy_field }} {% endcomment %}
+
+    {% comment %} {% crispy form form.helper %} {% endcomment %}    
+    <button default = 'false' type="button" class="btn btn-danger" style='margin-left:16px'><a href= '/'>Cancle</a></button>
+    <button type = 'submit' class='btn-success' style='margin-left:16px'>Submit</button>
+</form>

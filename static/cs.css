@@ -1,0 +1,26 @@
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+
+  text-align: center;
+  margin: 20px;
+  background-color: white;
+}
+
+button {
+  /* background-color: #4CAF50; Green */
+  border: none;
+  padding: 7px 14px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+p {
+  text-align: center;
+  margin-left:16px
+}
+

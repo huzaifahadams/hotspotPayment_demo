@@ -1,0 +1,73 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href=" ./static/style.css">
+    {% comment %} <link rel="stylesheet" href=" ./static/pop.css"> {% endcomment %}
+	<title>pay your internet bill</title>
+</head>
+<body>
+    
+	<h1>Choose the plan that fits for you</h1>
+    <p>
+      Deploy your sites to global infrastructure in seconds. No credit card
+      required
+    </p>
+ 
+    <div class="pricing">
+        {% for x in pkg reversed %}
+        <div class="plan">
+          <h2>{{x.name}}</h2>
+          <div class="price">{{x.price}}</div>
+          <div class="container">
+            <div class="row mb-4">
+                <a href="form.py" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Pay</a>
+              </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+        <!-- basic modal -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"   class="display-4 text-center mb-g-4">Techty </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  method = 'POST'>
+          {% csrf_token %}
+          <label for="number">Enter Phone Number To Pay:</label>
+          <input type="number" id="phone_num" name="phone" max="12" required/>
+          {% comment %} {% if messages %}
+          {% for message in messages %}
+          <h2 style='color:green'>{{message}}</h2>
+          {% endfor %}
+          {% endif %} {% endcomment %}
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit"  class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+       
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
